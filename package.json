@@ -1,0 +1,11 @@
+{
+  "name": "my-app",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter api dev\" \"pnpm --filter web dev\"",
+    "build": "pnpm --filter shared build && pnpm --filter web build && pnpm --filter api build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}
