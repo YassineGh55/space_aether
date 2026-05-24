@@ -9,11 +9,20 @@
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
+    "@my-app/shared": "workspace:*",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "drizzle-orm": "^0.45.2",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
     "postgres": "^3.4.9"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^3.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/express-session": "^1.19.0",
     "@types/node": "^25.9.1",
     "drizzle-kit": "^0.31.10",
     "tsx": "^4.22.3",
