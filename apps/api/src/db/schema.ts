@@ -1,4 +1,5 @@
 import { pgTable, text, timestamp, uuid, integer, pgEnum, doublePrecision } from "drizzle-orm/pg-core";
+import { relations } from "drizzle-orm";
 
 export const users = pgTable("users", {
   id: uuid("id").defaultRandom().primaryKey(),
@@ -65,3 +66,14 @@ export const gallery = pgTable("gallery", {
   credit: text("credit"),
   category: text("category"),
 });
+
+export const flightRelations = relations(flights, ({ one }) => ({
+  origin: one(destinations, { fields: [flights.originId], references: [destinations.id] }),
+  destination: one(destinations, { fields: [flights.destinationId], references: [destinations.id] }),
+  rocket: one(rockets, { fields: [flights.rocketId], references: [rockets.id] }),
+}));
+
+export const bookingRelations = relations(bookings, ({ one }) => ({
+  flight: one(flights, { fields: [bookings.flightId], references: [flights.id] }),
+  user: one(users, { fields: [bookings.userId], references: [users.id] }),
+}));

@@ -4,6 +4,10 @@ import session from "express-session";
 import cors from "cors";
 import { authRouter } from "./routes/auth";
 import { errorHandler } from "./middleware/error";
+import { flightsRouter } from "./routes/flights";
+import { destinationsRouter } from "./routes/destinations";
+import { galleryRouter } from "./routes/gallery";
+import { bookingsRouter } from "./routes/bookings";
 
 const app = express();
 
@@ -17,6 +21,10 @@ app.use(session({
 }));
 
 app.use("/api/auth", authRouter);
+app.use("/api/flights", flightsRouter);
+app.use("/api/destinations", destinationsRouter);
+app.use("/api/gallery", galleryRouter);
+app.use("/api/bookings", bookingsRouter);
 app.get("/api/health", (_, res) => res.json({ status: "ok" }));
 app.use(errorHandler);
 
