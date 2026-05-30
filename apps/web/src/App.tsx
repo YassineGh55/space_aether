@@ -5,6 +5,7 @@ import DashboardPage from "./pages/DashboardPage";
 import LandingPage from "./pages/LandingPage";
 import SchedulePage from "./pages/SchedulePage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import BookPage from "./pages/BookPage";
 
 export default function App() {
   return (
@@ -16,6 +17,9 @@ export default function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/dashboard" element={
           <ProtectedRoute><DashboardPage /></ProtectedRoute>
+        } />
+        <Route path="/book/:id" element={
+          <ProtectedRoute><BookPage /></ProtectedRoute>
         } />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
