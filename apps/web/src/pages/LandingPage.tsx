@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import StarCanvas from "../components/StarCanvas";
 import Nav from "../components/Nav";
