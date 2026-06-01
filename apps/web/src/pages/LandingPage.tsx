@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import StarCanvas from "../components/StarCanvas";
 import Nav from "../components/Nav";
+import FooterNote from "../components/FooterNote";
 import { useFlights, useDestinations, useGallery } from "../hooks/useFlights";
 
 function useReveal() {
@@ -150,13 +151,18 @@ export default function LandingPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="relative z-10 px-16 py-16 border-t border-cyan-500/10 flex justify-between items-end">
-        <div className="font-mono text-6xl font-bold text-zinc-800">ÆTHER</div>
-        <div className="font-mono text-xs text-zinc-600">© 2026 Aether Space Industries</div>
-        <div className="flex flex-col gap-2 items-end font-mono text-xs text-zinc-500">
-          {["Careers", "Press", "Investors", "Contact"].map(l => (
-            <a key={l} href="#" className="hover:text-white transition-colors">{l}</a>
-          ))}
+      <footer className="relative z-10 px-16 py-16 border-t border-cyan-500/10">
+        <div className="flex justify-between items-end">
+          <div className="font-mono text-6xl font-bold text-zinc-800">ÆTHER</div>
+          <div className="font-mono text-xs text-zinc-600">© 2026 Aether Space Industries</div>
+          <div className="flex flex-col gap-2 items-end font-mono text-xs text-zinc-500">
+            {["Careers", "Press", "Investors", "Contact"].map(l => (
+              <a key={l} href="#" className="hover:text-white transition-colors">{l}</a>
+            ))}
+          </div>
+        </div>
+        <div className="mt-10 pt-6 border-t border-cyan-500/10">
+          <FooterNote />
         </div>
       </footer>
     </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
+import FooterNote from "../components/FooterNote";
 import StarCanvas from "../components/StarCanvas";
 import { useFlights } from "../hooks/useFlights";
 import { useMe } from "../hooks/useAuth";
@@ -132,6 +133,10 @@ export default function SchedulePage() {
             </div>
           );
         })}
+      </div>
+
+      <div className="relative z-10 px-16 pb-12">
+        <FooterNote />
       </div>
 
       {/* BOOKING MODAL */}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams, useSearchParams, useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
+import FooterNote from "../components/FooterNote";
 import StarCanvas from "../components/StarCanvas";
 import { useFlight, useCreateBooking } from "../hooks/useFlights";
 
@@ -119,6 +120,10 @@ export default function BookPage() {
           {createBooking.isPending ? "Processing..." : "Confirm Booking →"}
         </button>
         {createBooking.error && <p className="text-red-400 font-mono text-xs mt-4">Booking failed. Please try again.</p>}
+
+        <div className="mt-12">
+          <FooterNote />
+        </div>
       </div>
     </div>
   );

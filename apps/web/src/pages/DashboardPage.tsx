@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
+import FooterNote from "../components/FooterNote";
 import StarCanvas from "../components/StarCanvas";
 import { useMe, useLogout } from "../hooks/useAuth";
 import { useBookings, useCancelBooking } from "../hooks/useFlights";
@@ -70,6 +71,10 @@ export default function DashboardPage() {
             className="font-mono text-xs tracking-widest uppercase text-zinc-600 hover:text-white transition-colors">
             Sign Out →
           </button>
+        </div>
+
+        <div className="mt-12">
+          <FooterNote />
         </div>
       </div>
     </div>

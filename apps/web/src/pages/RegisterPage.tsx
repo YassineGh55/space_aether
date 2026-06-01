@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useRegister } from "../hooks/useAuth";
+import FooterNote from "../components/FooterNote";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -16,8 +17,8 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-white flex items-center justify-center">
-      <div className="w-full max-w-sm space-y-8 px-4">
+    <main className="min-h-screen bg-black text-white flex flex-col">
+      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-sm mx-auto space-y-8 px-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">ÆTHER</h1>
           <p className="text-zinc-500 mt-2 text-sm">Create your account</p>
@@ -49,6 +50,9 @@ export default function RegisterPage() {
         <p className="text-zinc-500 text-sm text-center">
           Have an account? <Link to="/login" className="text-cyan-500 hover:underline">Sign in</Link>
         </p>
+      </div>
+      <div className="pb-8">
+        <FooterNote />
       </div>
     </main>
   );
