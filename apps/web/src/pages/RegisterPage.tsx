@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useRegister } from "../hooks/useAuth";
-import FooterNote from "../components/FooterNote";
+import AuthLayout from "../components/AuthLayout";
+import GoogleSignInButton, { AuthDivider } from "../components/GoogleSignIn";
 
 export default function RegisterPage() {
   const [name, setName] = useState("");
@@ -17,43 +18,31 @@ export default function RegisterPage() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-white flex flex-col">
-      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-sm mx-auto space-y-8 px-4">
+    <AuthLayout
+      title="Join the crew"
+      subtitle="Create your ÆTHER account"
+      footer={<>Have an account? <Link to="/login" className="text-cyan-400 hover:text-cyan-300 transition-colors">Sign in</Link></>}
+    >
+      <GoogleSignInButton />
+      <AuthDivider />
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">ÆTHER</h1>
-          <p className="text-zinc-500 mt-2 text-sm">Create your account</p>
+          <label className="section-label block mb-2 text-zinc-500">Name</label>
+          <input type="text" value={name} onChange={e => setName(e.target.value)} className="input-field" placeholder="Your name" required />
         </div>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text" placeholder="Name" value={name}
-            onChange={e => setName(e.target.value)}
-            className="w-full bg-zinc-900 border border-zinc-800 rounded px-4 py-3 text-sm focus:outline-none focus:border-cyan-500"
-          />
-          <input
-            type="email" placeholder="Email" value={email}
-            onChange={e => setEmail(e.target.value)}
-            className="w-full bg-zinc-900 border border-zinc-800 rounded px-4 py-3 text-sm focus:outline-none focus:border-cyan-500"
-          />
-          <input
-            type="password" placeholder="Password" value={password}
-            onChange={e => setPassword(e.target.value)}
-            className="w-full bg-zinc-900 border border-zinc-800 rounded px-4 py-3 text-sm focus:outline-none focus:border-cyan-500"
-          />
-          {register.error && <p className="text-red-400 text-sm">Registration failed</p>}
-          <button
-            type="submit" disabled={register.isPending}
-            className="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-bold py-3 rounded text-sm transition-colors disabled:opacity-50"
-          >
-            {register.isPending ? "Creating account..." : "Create account"}
-          </button>
-        </form>
-        <p className="text-zinc-500 text-sm text-center">
-          Have an account? <Link to="/login" className="text-cyan-500 hover:underline">Sign in</Link>
-        </p>
-      </div>
-      <div className="pb-8">
-        <FooterNote />
-      </div>
-    </main>
+        <div>
+          <label className="section-label block mb-2 text-zinc-500">Email</label>
+          <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="input-field" placeholder="you@example.com" required />
+        </div>
+        <div>
+          <label className="section-label block mb-2 text-zinc-500">Password</label>
+          <input type="password" value={password} onChange={e => setPassword(e.target.value)} className="input-field" placeholder="••••••••" required />
+        </div>
+        {register.error && <p className="text-red-400 text-sm font-mono">Registration failed</p>}
+        <button type="submit" disabled={register.isPending} className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed">
+          {register.isPending ? "Creating account..." : "Create account with email"}
+        </button>
+      </form>
+    </AuthLayout>
   );
 }

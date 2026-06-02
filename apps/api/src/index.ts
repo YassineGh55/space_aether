@@ -2,7 +2,7 @@ import "./env";
 import express from "express";
 import session from "express-session";
 import cors from "cors";
-import { isProduction } from "./env";
+import { useSecureCookies } from "./env";
 import { authRouter } from "./routes/auth";
 import { errorHandler } from "./middleware/error";
 import { flightsRouter } from "./routes/flights";
@@ -21,8 +21,8 @@ app.use(session({
   saveUninitialized: false,
   cookie: {
     httpOnly: true,
-    secure: isProduction,
-    sameSite: isProduction ? "none" : "lax",
+    secure: useSecureCookies,
+    sameSite: useSecureCookies ? "none" : "lax",
   },
 }));
 

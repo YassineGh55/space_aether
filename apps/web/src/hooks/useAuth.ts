@@ -41,6 +41,17 @@ export function useRegister() {
   });
 }
 
+export function useGoogleAuth() {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (credential: string) => {
+      const res = await api.post("/auth/google", { credential });
+      return res.data.data as User;
+    },
+    onSuccess: (user) => qc.setQueryData(["me"], user),
+  });
+}
+
 export function useLogout() {
   const qc = useQueryClient();
   return useMutation({
